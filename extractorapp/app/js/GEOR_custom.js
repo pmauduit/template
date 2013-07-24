@@ -268,10 +268,6 @@ GEOR.custom = {
             owstype: "WMS",
             owsurl: "http://geo.gob.bo/geoserver/sernap/wms",
             layername: "sernap:APs_municipales"
-        },{
-            owstype: "WFS",
-            owsurl: "http://www.geopicardie.fr/geoserver/wms",
-            layername: "geopicardie:vent40m"
         }
     ],
     
