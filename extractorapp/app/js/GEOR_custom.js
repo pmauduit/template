@@ -254,8 +254,24 @@ GEOR.custom = {
     STARTUP_LAYERS: [
         {
             owstype: "WMS",
-            owsurl: "http://geoservices.brgm.fr/risques",
-            layername: "BASIAS_LOCALISE"
+            owsurl: "http://www.geopicardie.fr/geoserver/wms",
+            layername: "reg22:lycees_adresses"
+        },{
+            owstype: "WMS",
+            owsurl: "http://www.geopicardie.fr/geoserver/wms",
+            layername: "reg22:Pays_2013_BYcplet_FLA10"
+        },{
+            owstype: "WMS",
+            owsurl: "http://geo.gob.bo/geoserver/sernap/wms",
+            layername: "sernap:APs_regionales"
+        },{
+            owstype: "WMS",
+            owsurl: "http://geo.gob.bo/geoserver/sernap/wms",
+            layername: "sernap:APs_municipales"
+        },{
+            owstype: "WFS",
+            owsurl: "http://www.geopicardie.fr/geoserver/wms",
+            layername: "geopicardie:vent40m"
         }
     ],
     
@@ -263,17 +279,7 @@ GEOR.custom = {
      * Constant: STARTUP_SERVICES
      * {Array} OGC services loaded at startup if none are sent
      */
-    STARTUP_SERVICES: [
-        {
-            text: "BRGM Risques",
-            owstype: "WMS",
-            owsurl: "http://geoservices.brgm.fr/risques"
-        },{
-            text: "Gest'eau",
-            owstype: "WMS",
-            owsurl: "http://gesteau.oieau.fr/service"
-        }
-    ],
+    STARTUP_SERVICES: [],
 
     /**
      * Constant: SPLASH_SCREEN

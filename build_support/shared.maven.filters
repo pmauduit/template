@@ -17,7 +17,8 @@
 # shared.server.name=localhost
 # shared.server.port=8080
 #
-shared.server.name=vm-georchestra
+shared.server.name=localhost
+shared.server.port=8080
 
 # --------------------------------------------------
 # LANGUAGE
@@ -181,7 +182,7 @@ shared.psql.pass=www-data
 # shared.psql.download_form.db=downloadform
 # shared.download_form.pdfurl=/static/usage.pdf
 #
-shared.download_form.activated=true
+shared.download_form.activated=false
 shared.psql.download_form.db=downloadform
 shared.download_form.pdfurl=/static/usage.pdf
 
