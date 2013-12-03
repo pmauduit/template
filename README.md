@@ -1,4 +1,4 @@
-template
+Pmauduit
 ========
 
-Template configuration for geOrchestra: Fork me !
+Pmauduit's dev profile

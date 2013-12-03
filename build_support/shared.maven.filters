@@ -10,7 +10,7 @@
 # This name appears in many places across the SDI, typically page titles.
 # Defaults to geOrchestra but could be GeoBretagne, GeoBolivia, etc
 #
-#shared.instance.name=geOrchestra
+shared.instance.name=géOrchestra
 
 
 # --------------------------------------------------
@@ -24,12 +24,13 @@
 # shared.server.name=localhost
 # shared.server.port=8080
 #
-shared.server.name=vm-georchestra
+shared.server.name=localhost
+shared.server.port=8080
 
 # sets the public address of your homepage.
 # Defaults to http://@shared.server.name@/
 #
-shared.homepage.url=http://@shared.server.name@/
+shared.homepage.url=http://@shared.server.name@:@shared.server.port@/
 
 # --------------------------------------------------
 # LANGUAGE
@@ -39,7 +40,7 @@ shared.homepage.url=http://@shared.server.name@/
 # May be one of the following: fr, es, en
 # Default value: en
 #
-#shared.language=en
+shared.language=fr
 
 
 # --------------------------------------------------
@@ -54,9 +55,9 @@ shared.homepage.url=http://@shared.server.name@/
 # --------------------------------------------------
 # GEONETWORK
 # --------------------------------------------------
-geonetwork.language=eng
+geonetwork.language=fre
 shared.psql.geonetwork.db=geonetwork
-shared.geonetwork.dir=/var/lib/tomcat6/work/gn_data
+shared.geonetwork.dir=/home/pmauduit/projects/georchestra/gn_dir
 
 
 # --------------------------------------------------
@@ -94,7 +95,7 @@ shared.ldap.baseDn=dc=georchestra,dc=org
 shared.ldap.userSearchBaseDN=ou=users
 shared.ldap.groupSearchBaseDN=ou=groups
 shared.ldap.admin.dn=cn=admin,@shared.ldap.baseDn@
-shared.ldap.admin.password=secret
+shared.ldap.admin.password=blah
 
 
 # --------------------------------------------------
@@ -141,12 +142,12 @@ shared.smtp.host=localhost
 shared.smtp.port=25
 
 # for emails sent by extractorapp:
-shared.email.replyTo=psc\@georchestra.org
-shared.email.from=psc\@georchestra.org
+shared.email.replyTo=pierre.mauduit\@camptocamp.com
+shared.email.from=pierre.mauduit\@camptocamp.com
 
 # the following email receives new account requests if ldapadmin
 # is configured with moderatedSignup = true (which is the default)
-shared.administrator.email=psc\@georchestra.org
+shared.administrator.email=pierre.mauduit\@camptocamp.com
 
 # send notification mails in HTML ?
 # Defaults to: false (ie. plain text emails)
