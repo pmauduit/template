@@ -9,9 +9,8 @@
 # Instance name
 # This name appears in many places across the SDI, typically page titles.
 # Defaults to geOrchestra but could be GeoBretagne, GeoBolivia, etc
-# Caution: no accentuated chars are supported in this string (see https://github.com/georchestra/georchestra/issues/479)
-
-shared.instance.name=geOrchestra
+#
+shared.instance.name=géOrchestra
 
 # --------------------------------------------------
 # PUBLIC URL
