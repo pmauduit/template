@@ -28,7 +28,8 @@ shared.server.name=vm-georchestra
 # sets the public address of your homepage.
 # Defaults to http://@shared.server.name@/
 
-shared.homepage.url=http://@shared.server.name@/
+shared.server.port=8080
+shared.homepage.url=http://@shared.server.name@:@shared.server.port@/
 
 # --------------------------------------------------
 # LANGUAGE
@@ -37,7 +38,6 @@ shared.homepage.url=http://@shared.server.name@/
 # sets the language for all modules
 # May be one of the following: fr, es, en
 # Default value: en
-
 shared.language=en
 
 
@@ -53,6 +53,9 @@ shared.header.height=90
 # --------------------------------------------------
 # GEONETWORK
 # --------------------------------------------------
+geonetwork.language=fre
+shared.psql.geonetwork.db=geonetwork
+shared.geonetwork.dir=/home/pmauduit/projects/georchestra/gn_dir/
 
 shared.geonetwork.language=eng
 
@@ -109,15 +112,12 @@ shared.smtp.host=localhost
 shared.smtp.port=25
 
 # for emails sent by extractorapp:
-
-shared.email.replyTo=psc\@georchestra.org
-shared.email.from=psc\@georchestra.org
+shared.email.replyTo=pierre.mauduit\@camptocamp.com
+shared.email.from=pierre.mauduit\@camptocamp.com
 
 # the following email receives new account requests if ldapadmin
 # is configured with moderatedSignup = true (which is the default)
-# (have a look at your own GenerateConfig.groovy)
-
-shared.administrator.email=psc\@georchestra.org
+shared.administrator.email=pierre.mauduit\@camptocamp.com
 
 # send notification mails in HTML ?
 # Defaults to: false (ie. plain text emails)
@@ -168,12 +168,13 @@ shared.psql.pass=www-data
 # The downloadform will log every download request in a database,
 # see downloadform/database.sql
 # + example +
-# shared.download_form.pdfurl=/_static/usage.pdf
-# or
-# shared.download_form.pdfurl=//url.to/cgu.pdf
-
-shared.download_form.activated=false
-shared.download_form.pdfurl=
+# shared.download_form.activated=false
+# shared.psql.download_form.db=downloadform
+# shared.download_form.pdfurl=/static/usage.pdf
+#
+shared.download_form.activated=true
+shared.psql.download_form.db=downloadform
+shared.download_form.pdfurl=/static/usage.pdf
 
 
 # --------------------------------------------------
@@ -184,6 +185,14 @@ shared.download_form.pdfurl=
 # all queries to the OGC web services will be logged in a db.
 # see ogc-server-statistics/database.sql
 
-shared.ogc.statistics.activated=false
+
+shared.ogc.statistics.activated=true
+shared.psql.ogc.statistics.db=ogcstatistics
 
 
+# --------------------------------------------------
+# HEALTH CHECK properties
+# --------------------------------------------------
+shared.checkhealth.activated=true
+shared.psql.checkhealth.db=@shared.psql.geonetwork.db@
+shared.checkhealth.max_db_connections=170
