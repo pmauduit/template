@@ -95,8 +95,7 @@ shared.ldap.userSearchBaseDN=ou=users
 shared.ldap.groupSearchBaseDN=ou=groups
 shared.ldap.admin.dn=cn=admin,@shared.ldap.baseDn@
 shared.ldap.admin.password=secret
-
-
+shared.ldap.userSearchFilter=uid=%u
 # --------------------------------------------------
 # GEOSERVER
 # --------------------------------------------------
@@ -167,7 +166,7 @@ shared.email.html=false
 # Here we use /tmp because we want to prevent this kind of error 
 # http://applis-bretagne.fr/redmine/issues/4311 when Tomcat is not installed
 #
-shared.log.dir=/tmp
+shared.log.dir=/home/pmauduit/projects/georchestra/tomcats/tomcat/logs
 
 
 # --------------------------------------------------
