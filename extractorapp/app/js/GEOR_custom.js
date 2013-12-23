@@ -28,7 +28,7 @@ GEOR.custom = {
     /**
      * Constant: PDF_URL
      * String: the URL to the downloaded data Terms Of Use
-     * Defaults to /static/cgu.pdf (see shared.download_form.pdf_url var in shared.maven.filters file)
+     * Defaults to /header/cgu.pdf (see shared.download_form.pdf_url var in shared.maven.filters file)
      */
     PDF_URL: "@shared.download_form.pdfurl@",
     
@@ -231,14 +231,14 @@ GEOR.custom = {
      * {Array} Array of buffer values with their display name
      */
     /*BUFFER_VALUES: [
-        [0,'aucun'],
-        [10,'10 mètres'],
-        [50,'50 mètres'],
-        [100,'100 mètres'],
-        [500,'500 mètres'],
-        [1000,'1 kilomètre'],
-        [5000,'5 kilomètres'],
-        [10000,'10 kilomètres']
+        [0, "None"],
+        [10, "BUFFER meters"],
+        [50, "BUFFER meters"],
+        [100, "BUFFER meters"],
+        [500, "BUFFER meters"],
+        [1000, "BUFFER kilometer"],
+        [5000, "BUFFER kilometers"],
+        [10000, "BUFFER kilometers"]
     ],*/
     
     /**
