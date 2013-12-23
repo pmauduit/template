@@ -174,8 +174,6 @@ shared.psql.pass=www-data
 shared.download_form.activated=true
 shared.psql.download_form.db=downloadform
 shared.download_form.pdfurl=/static/usage.pdf
-
-
 # --------------------------------------------------
 # OGC statistics
 # --------------------------------------------------
@@ -186,7 +184,7 @@ shared.download_form.pdfurl=/static/usage.pdf
 
 
 shared.ogc.statistics.activated=true
-shared.psql.ogc.statistics.db=ogcstatistics
+shared.psql.ogc.statistics.db=georchestra
 
 
 # --------------------------------------------------
