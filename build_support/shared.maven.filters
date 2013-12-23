@@ -206,16 +206,9 @@ shared.psql.pass=www-data
 # or
 # shared.download_form.pdfurl=//url.to/cgu.pdf
 #
-<<<<<<< HEAD
 shared.download_form.activated=true
-shared.psql.download_form.db=downloadform
-shared.download_form.pdfurl=/static/usage.pdf
-=======
-shared.download_form.activated=false
 shared.psql.download_form.db=georchestra
-shared.download_form.pdfurl=
->>>>>>> upstream/master
-
+shared.download_form.pdfurl=/static/usage.pdf
 
 # --------------------------------------------------
 # OGC statistics
@@ -226,7 +219,7 @@ shared.download_form.pdfurl=
 # see ogc-server-statistics/database.sql
 
 shared.ogc.statistics.activated=true
-shared.psql.ogc.statistics.db=ogcstatistics
+shared.psql.ogc.statistics.db=georchestra
 
 # --------------------------------------------------
 # LDAPadmin
