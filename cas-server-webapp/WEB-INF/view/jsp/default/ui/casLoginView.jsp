@@ -13,7 +13,7 @@
 
           <c:if test="${empty sessionScope.openIdLocalId}">
           <spring:message code="screen.welcome.label.netid.accesskey" var="userNameAccessKey" />
-          <form:input cssClass="required" cssErrorClass="error" id="username" tabindex="1" accesskey="${userNameAccessKey}" path="username" autocomplete="false" htmlEscape="true" />
+          <form:input cssClass="required" cssErrorClass="error" id="username" tabindex="1" accesskey="${userNameAccessKey}" path="username" autocomplete="on" htmlEscape="true" />
           </c:if>
         </fieldset>
         </div>
@@ -22,7 +22,7 @@
             <label for="password"><spring:message code="screen.welcome.label.password" /></label>
             <spring:message code="screen.welcome.label.password.accesskey" var="passwordAccessKey" />
             <form:password cssClass="required" cssErrorClass="error" id="password" tabindex="2" path="password"  accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off" />
-            <div id="forgot"><a href="/ldapadmin/account/lostPassword"><spring:message code="screen.welcome.link.forgot" /></a></div>
+            <div id="forgot"><a href="/ldapadmin/account/passwordRecovery"><spring:message code="screen.welcome.link.forgot" /></a></div>
           </fieldset>
         </div>
         <div class="row btn-row" style="text-align: center;">

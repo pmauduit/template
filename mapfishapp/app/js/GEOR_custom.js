@@ -351,18 +351,18 @@ GEOR.custom = {
     /**
      * Constant: POINTER_POSITION_SRS_LIST
      * {Array} The cursor position will be displayed using these SRS.
-     * Defaults to [["EPSG:4326", "WGS 84"],["EPSG:2154", "Lambert 93"]]
+     * Defaults to [["EPSG:4326", "WGS 84"],["EPSG:3857", "Spherical Mercator"]]
      * Note: be sure to have all these projections defined in PROJ4JS_STRINGS
      *
     POINTER_POSITION_SRS_LIST: [
         ["EPSG:4326", "WGS 84"],
-        ["EPSG:2154", "Lambert 93"]
+        ["EPSG:3857", "Spherical Mercator"]
     ],*/
 
     /**
      * Constant: PROJ4JS_STRINGS
      * {Object} The list of supported SRS with their definitions.
-     * Defaults to "EPSG:4326", "EPSG:2154" & "EPSG:900913" being defined
+     * Defaults to "EPSG:4326", "EPSG:3857" & "EPSG:900913" being defined
      * Note that "EPSG:900913" is required if OSM_AS_OVMAP is set to true
      *
     PROJ4JS_STRINGS: {
@@ -436,15 +436,19 @@ GEOR.custom = {
      * by specifying either an adminCode1 or adminCode2 or adminCode3
      * See http://download.geonames.org/export/dump/admin1CodesASCII.txt for adminCode1
      * Aquitaine matches '97' while Bretagne (Brittany) matches 'A2'
-     *
+     */
     GEONAMES_FILTERS: {
+        username: 'georchestra', // please replace this username by yours !
+        // You can create a geonames account here: http://www.geonames.org/login
+        // It is then required to enable your account to query the free web services
+        // by visiting http://www.geonames.org/manageaccount
         country: 'FR',         // France
-        //adminCode1: '97',
+        //adminCode1: '97',    // Region
         style: 'short',        // verbosity of results
         lang: 'fr',
         featureClass: 'P',     // class category: populated places
         maxRows: 20            // maximal number of results
-    },*/
+    },
 
     /**
      * Constant: GEONAMES_ZOOMLEVEL
@@ -571,6 +575,37 @@ GEOR.custom = {
      * PLatform layers only with this config
      */
     EDITABLE_LAYERS: /.*@shared.server.name@.*/i,
+
+    /**
+     * Constant: FORCE_LOGIN_IN_TOOLBAR
+     * {Boolean} If true, the login link is always shown in the app toolbar.
+     * Defaults to false.
+     */
+    //FORCE_LOGIN_IN_TOOLBAR: false,
+
+    /**
+     * Constant: SEND_MAP_TO
+     * {Array} List of menu items configs
+     *
+     * Each menu item config **must** have the following properties: 
+     *  - name: the link name. Will be localized by OpenLayers.i18n
+     *  - url: the template url for the link. Must contain one of 
+     *   {context_url}, {map_url} or {id} strings, which will be resp. 
+     *   replaced by the generated WMC link, the map permalink and the map id.
+     *
+     * Each menu item config **may** have the following properties: 
+     *  - qtip: the tip appearing on menu item hover. Will be localized by OpenLayers.i18n
+     *  - iconCls: the CSS class which will be appended to the menu item
+     *
+    SEND_MAP_TO: [{
+        "name": "Mobile viewer", 
+        "url": "http://sdi.georchestra.org/sviewer/?wmc={context_url}",
+        "qtip": "Mobile compatible viewer on sdi.georchestra.org"
+    }, {
+        "name": "Desktop viewer",
+        "url": "http://sdi.georchestra.org/mapfishapp/?wmc={context_url}",
+        "qtip": "Desktop viewer on sdi.georchestra.org"
+    }],*/
 
     /**
      * Constant: WMTS_SERVERS
