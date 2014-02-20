@@ -55,7 +55,7 @@ shared.language=fr
 # GEONETWORK
 # --------------------------------------------------
 geonetwork.language=fre
-shared.psql.geonetwork.db=geonetwork
+shared.psql.geonetwork.db=georchestra
 shared.geonetwork.dir=/home/pmauduit/projects/georchestra/gn_dir/
 
 
