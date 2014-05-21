@@ -114,7 +114,7 @@ class GenerateConfig {
             to: 'geoserver-webapp/WEB-INF/classes'
         ).update { properties ->
             // if you're running GeoFence, update the following URL to match your setup:
-            properties['servicesUrl'] = "http://localhost:8080/geofence-private/remoting/RuleReader"
+            properties['servicesUrl'] = "http://localhost:8081/geofence/remoting/RuleReader"
         }
     }
 
@@ -172,7 +172,7 @@ class GenerateConfig {
             to: 'security-proxy'
         ).update { properties ->
             properties['cas.private.host'] = "localhost"
-            properties['public.ssl'] = "443"
+            properties['public.ssl'] = "8443"
             properties['private.ssl'] = "8443"
             properties['proxy.defaultTarget'] = proxyDefaultTarget
             properties['proxy.mapping'] = """
@@ -181,8 +181,8 @@ class GenerateConfig {
 <entry key="downloadform"  value="proxyDefaultTarget/downloadform-private/" />
 <entry key="extractorapp"  value="proxyDefaultTarget/extractorapp-private/" />
 <entry key="geonetwork"    value="proxyDefaultTarget/geonetwork-private/" />
-<entry key="geoserver"     value="proxyDefaultTarget/geoserver-private/" />
-<entry key="geofence"      value="proxyDefaultTarget/geofence-private/" />
+<entry key="geoserver"     value="http://localhost:8081/geoserver/" />
+<entry key="geofence"      value="http://localhost:8081/geofence/" />
 <entry key="header"        value="proxyDefaultTarget/header-private/" />
 <entry key="ldapadmin"     value="proxyDefaultTarget/ldapadmin-private/" />
 <entry key="mapfishapp"    value="proxyDefaultTarget/mapfishapp-private/" />
@@ -196,7 +196,7 @@ class GenerateConfig {
             // database health check settings:
             // If the HEALTH CHECK feature is activated, the security proxy monitors db connections.
             properties['checkHealth'] = "false"
-            properties['psql.db'] = "geonetwork"
+            properties['psql.db'] = "georchestra"
             properties['max.database.connections'] = "170"
         }
     }
