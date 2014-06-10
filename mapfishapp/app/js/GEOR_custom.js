@@ -69,12 +69,14 @@ GEOR.custom = {
         "title": {
             "en": "Aerial imagery magnifier",
             "es": "Lupa ortofoto",
-            "fr": "Loupe orthophoto"
+            "fr": "Loupe orthophoto",
+            "de": "Ortofoto Lupe"
         },
         "description": {
             "en": "A tool which allows to zoom in an aerial image on a map portion",
             "es": "Una herramienta que permite hacer un zoom sobre una parte del mapa ortofoto",
-            "fr": "Un outil qui permet de zoomer dans une orthophoto sur une portion de la carte"
+            "fr": "Un outil qui permet de zoomer dans une orthophoto sur une portion de la carte",
+            "de": "Utensil erlaubt Zoom mittels orthofoto auf Kartenbereich"
         }
     }, {
         "id": "annotation_0", // unique & stable string identifier for this addon instance
@@ -82,12 +84,14 @@ GEOR.custom = {
         "title": {
             "en": "Drawing tools",
             "es": "Herramientas de dibujo",
-            "fr": "Outils de dessin"
+            "fr": "Outils de dessin",
+            "de": "Malutensilien"
         },
         "description": {
             "en": "A bunch of tools to annotate the map by drawing different kind of shapes.",
             "es": "Una serie de herramientas para anotar el mapa dibujando diferentes formas.",
-            "fr": "Une série d'outils pour annoter la carte en dessinant différentes formes."
+            "fr": "Une série d'outils pour annoter la carte en dessinant différentes formes.",
+            "de": "Utensilienauswahl zur Kartenmarkierung mittels unterschiedlicher Formen"
         }
     }],
     
@@ -108,11 +112,12 @@ GEOR.custom = {
     //GEOSERVER_WMS_URL: "/geoserver/wms",
 
     /**
-     * Constant: GEONETWORK_URL
-     * The URL to the GeoNetwork server.
-     * Defaults to "/geonetwork/srv/fre"
+     * Constant: GEONETWORK_BASE_URL
+     * The base URL to the local GeoNetwork server.
+     * Required for CSW Browser module.
+     * Defaults to "/geonetwork"
      */
-    GEONETWORK_URL: "http://geobretagne.fr/geonetwork/srv/fre",
+    GEONETWORK_BASE_URL: "http://geobretagne.fr/geonetwork",
 
     /**
      * Constant: CSW_GETDOMAIN_SORTING
@@ -193,17 +198,17 @@ GEOR.custom = {
     /**
      * Constant: MAX_FEATURES
      * The maximum number of vector features displayed.
-     * Defaults to a value estimated by an empirical formula
+     * Defaults to 1000
      */
-    MAX_FEATURES: 500,
-    
+    //MAX_FEATURES: 1000,
+
     /**
      * Constant: MAX_LENGTH
-     * The maximum number of chars in a XML response 
+     * The maximum number of chars in a XML response
      * before triggering an alert.
-     * Defaults to a value estimated by an empirical formula
+     * Defaults to 2 millions
      */
-    MAX_LENGTH: 500000,
+    //MAX_LENGTH: 2048*1024,
 
     /**
      * Constant: OSM_AS_OVMAP
