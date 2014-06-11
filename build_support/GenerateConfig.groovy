@@ -186,7 +186,8 @@ class GenerateConfig {
 <entry key="header"        value="proxyDefaultTarget/header-private/" />
 <entry key="ldapadmin"     value="proxyDefaultTarget/ldapadmin-private/" />
 <entry key="mapfishapp"    value="proxyDefaultTarget/mapfishapp-private/" />
-<entry key="static"        value="proxyDefaultTarget/header-private/" />""".replaceAll("\n|\t","").replaceAll("proxyDefaultTarget",proxyDefaultTarget)
+<entry key="static"        value="proxyDefaultTarget/header-private/" />
+<entry key="jni-info"      value="proxyDefaultTarget/jni-info-private/" />""".replaceAll("\n|\t","").replaceAll("proxyDefaultTarget",proxyDefaultTarget)
             properties['header.mapping'] = """
 <entry key="sec-email"     value="mail" />
 <entry key="sec-firstname" value="givenName" />

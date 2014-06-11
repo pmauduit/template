@@ -25,7 +25,8 @@ proxy.mapping=\
     <entry key="header" value="${proxy.defaultTarget}/header-private/" />\
     <entry key="analytics" value="${proxy.defaultTarget}/analytics-private/" />\
     <entry key="ldapadmin" value="${proxy.defaultTarget}/ldapadmin-private/" />\
-    <entry key="static" value="${proxy.defaultTarget}/header-private/" />
+    <entry key="static" value="${proxy.defaultTarget}/header-private/" />\
+    <entry key="jni-info" value="${proxy.defaultTarget}/jni-info-private/" />
 # Note the last entry, "static", is for retro-compatibility - it might disappear in a future release
 
 # header mapping
