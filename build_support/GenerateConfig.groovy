@@ -124,7 +124,7 @@ class GenerateConfig {
      */
     def updateSecProxyMavenFilters() {
 
-        def proxyDefaultTarget = "http://localhost:8080"
+        def proxyDefaultTarget = "http://localhost:8082"
 
         new PropertyUpdate(
             path: 'maven.filter',
@@ -136,18 +136,18 @@ class GenerateConfig {
             properties['private.ssl'] = "8443"
             properties['proxy.defaultTarget'] = proxyDefaultTarget
             properties['proxy.mapping'] = """
-<entry key="analytics"     value="proxyDefaultTarget/analytics-private/" />
-<entry key="catalogapp"    value="proxyDefaultTarget/catalogapp-private/" />
-<entry key="downloadform"  value="proxyDefaultTarget/downloadform-private/" />
-<entry key="extractorapp"  value="proxyDefaultTarget/extractorapp-private/" />
-<entry key="geonetwork"    value="proxyDefaultTarget/geonetwork-private/" />
+<entry key="analytics"     value="proxyDefaultTarget/analytics/" />
+<entry key="catalogapp"    value="proxyDefaultTarget/catalogapp/" />
+<entry key="downloadform"  value="proxyDefaultTarget/downloadform/" />
+<entry key="extractorapp"  value="proxyDefaultTarget/extractorapp/" />
+<entry key="geonetwork"    value="proxyDefaultTarget/geonetwork/" />
 <entry key="geoserver"     value="http://localhost:8081/geoserver/" />
 <entry key="geofence"      value="http://localhost:8081/geofence/" />
-<entry key="header"        value="proxyDefaultTarget/header-private/" />
-<entry key="ldapadmin"     value="proxyDefaultTarget/ldapadmin-private/" />
-<entry key="mapfishapp"    value="proxyDefaultTarget/mapfishapp-private/" />
-<entry key="static"        value="proxyDefaultTarget/header-private/" />
-<entry key="jni-info"      value="proxyDefaultTarget/jni-info-private/" />""".replaceAll("\n|\t","").replaceAll("proxyDefaultTarget",proxyDefaultTarget)
+<entry key="header"        value="proxyDefaultTarget/header/" />
+<entry key="ldapadmin"     value="proxyDefaultTarget/ldapadmin/" />
+<entry key="mapfishapp"    value="proxyDefaultTarget/mapfishapp/" />
+<entry key="static"        value="proxyDefaultTarget/header/" />
+<entry key="jni-info"      value="proxyDefaultTarget/jni-info/" />""".replaceAll("\n|\t","").replaceAll("proxyDefaultTarget",proxyDefaultTarget)
             properties['header.mapping'] = """
 <entry key="sec-email"     value="mail" />
 <entry key="sec-firstname" value="givenName" />
