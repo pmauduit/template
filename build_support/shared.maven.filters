@@ -206,7 +206,7 @@ shared.psql.pass=www-data
 # shared.download_form.pdfurl=/static/usage.pdf
 #
 shared.download_form.activated=true
-shared.psql.download_form.db=downloadform
+shared.psql.download_form.db=georchestra
 shared.download_form.pdfurl=/static/usage.pdf
 
 
