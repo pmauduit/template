@@ -117,7 +117,7 @@ GEOR.custom = {
      * Required for CSW Browser module.
      * Defaults to "/geonetwork"
      */
-    GEONETWORK_BASE_URL: "http://geobretagne.fr/geonetwork",
+    GEONETWORK_BASE_URL: "/geonetwork",
 
     /**
      * Constant: CSW_GETDOMAIN_SORTING
