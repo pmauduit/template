@@ -26,7 +26,7 @@ shared.instance.name=géOrchestra
 shared.server.name=localhost
 shared.server.port=8080
 # sets the public address of your homepage.
-# Defaults to http://@shared.server.name@/
+# Defaults to @shared.url.scheme@://@shared.server.name@/
 
 shared.server.port=8080
 shared.homepage.url=http://@shared.server.name@:@shared.server.port@/
@@ -36,7 +36,7 @@ shared.homepage.url=http://@shared.server.name@:@shared.server.port@/
 # --------------------------------------------------
 
 # sets the language for all modules
-# May be one of the following: fr, es, en
+# May be one of the following: fr, es, en, de
 # Default value: en
 
 #

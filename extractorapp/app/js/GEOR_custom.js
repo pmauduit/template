@@ -55,7 +55,28 @@ GEOR.custom = {
         ["tab", "TAB"],
         ["kml", "KML"]
     ],*/
-    
+
+    /**
+     * Constant: SUPPORTED_RESOLUTIONS
+     * List of supported resolutions.
+     * Defaults to 0.2 0.5 1 2 5 10 meters
+     *
+    SUPPORTED_RESOLUTIONS: [
+        ["0.2", "0.2"],
+        ["0.5", "0.5"],
+        ["1", "1"],
+        ["2", "2"],
+        ["5", "5"],
+        ["10", "10"]
+    ],*/
+
+    /**
+     * Constant: DEFAULT_RESOLUTION
+     * Defaults to 10 meters
+     * Please read https://github.com/georchestra/georchestra/issues/726
+     *
+    DEFAULT_RESOLUTION: 10,*/
+
     /**
      * Constant: GEOSERVER_WMS_URL
      * The URL to GeoServer WMS.
@@ -84,9 +105,10 @@ GEOR.custom = {
     /**
      * Constant: MAP_DOTS_PER_INCH
      * {Float} Sets the resolution used for scale computation.
-     * Defaults to GeoServer defaults, which is 25.4 / 0.28
+     * Defaults to 1000 / 39.37 / 0.28
+     * see https://github.com/georchestra/georchestra/issues/736
      */
-    //MAP_DOTS_PER_INCH: 25.4 / 0.28,
+    //MAP_DOTS_PER_INCH: 1000 / 39.37 / 0.28,
 
     /**
      * Constant: GLOBAL_EPSG

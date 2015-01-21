@@ -21,27 +21,24 @@ GEOR.custom = {
 
     /**
      * Constant: CONTEXTS
-     * {Array} the array of arrays describing the available contexts
+     * {Array} the array describing the available contexts
      *
-     * Each "context array" consists of 4 mandatory fields:
-     *   * the first field is the label which appears in the UI
-     *   * the second one is the path to the thumbnail
-     *   * the third one is the path to the context (WMC) file
-     *   * the last one is a comment which will be shown on thumbnail hovering
+     * Each "context object" consists of 5 mandatory fields:
+     *   * the label which appears in the UI
+     *   * the path to the thumbnail
+     *   * the path to the context (WMC) file
+     *   * the comment which will be shown on thumbnail hovering
+     *   * the keywords used to filter the view
      *
-     * Example config : 
-     *   [
-     *      ["OpenStreetMap", "app/img/contexts/osm.png", "default.wmc", "A unique OSM layer"],
-     *      ["Orthophoto", "app/img/contexts/ortho.png", "contexts/ortho.wmc", "Orthophoto 2009"],
-     *      ["Forêts", "app/img/contexts/forets.png", "contexts/forets.wmc", "Les 3 couches forêts sur fond OSM"]
-     *   ]
-     *
-     * Defaults to ["OpenStreetMap", "app/img/contexts/osm.png", "default.wmc", "A unique OSM layer"]
      * Should *not* be empty !
      *
-    CONTEXTS: [
-        ["OpenStreetMap", "app/img/contexts/osm.png", "default.wmc", "A unique OSM layer"]
-    ],*/
+    CONTEXTS: [{
+        label: "OpenStreetMap",
+        thumbnail: "app/img/contexts/osm.png",
+        wmc: "default.wmc",
+        tip: "A unique OSM layer",
+        keywords: ["OpenStreetMap", "Basemap"]
+    }],*/
 
     /**
      * Constant: ADDONS
@@ -141,6 +138,7 @@ GEOR.custom = {
      * List of catalogs for freetext search
      */
     CATALOGS: [
+        ['http://sdi.georchestra.org/geonetwork/srv/fre/csw', 'le catalogue geOrchestra démo'],
         ['http://geobretagne.fr/geonetwork/srv/fre/csw', 'le catalogue GeoBretagne'],
         ['http://ids.pigma.org/geonetwork/srv/fre/csw', 'le catalogue PIGMA'],
         ['/geonetwork/srv/fre/csw', 'le catalogue local'],
@@ -154,7 +152,7 @@ GEOR.custom = {
      * CSW URL which should be used by default for freetext search
      * Note: must be one of the URLs in the above CATALOGS config option
      */
-    //DEFAULT_CSW_URL: 'http://geobretagne.fr/geonetwork/srv/fre/csw',
+    DEFAULT_CSW_URL: 'http://sdi.georchestra.org/geonetwork/srv/fre/csw',
 
     /**
      * Constant: MAX_CSW_RECORDS
@@ -248,9 +246,10 @@ GEOR.custom = {
     /**
      * Constant: MAP_DOTS_PER_INCH
      * {Float} Sets the resolution used for scale computation.
-     * Defaults to GeoServer defaults, which is 25.4 / 0.28
+     * Defaults to 1000 / 39.37 / 0.28
+     * see https://github.com/georchestra/georchestra/issues/736
      */
-    //MAP_DOTS_PER_INCH: 25.4 / 0.28,
+    //MAP_DOTS_PER_INCH: 1000 / 39.37 / 0.28,
     
     /**
      * Constant: RECENTER_ON_ADDRESSES
@@ -479,6 +478,34 @@ GEOR.custom = {
     //DISPLAY_VISIBILITY_RANGE: true,
 
     /**
+     * Constant: LAYER_INFO_TEMPLATE
+     * {String} The template used to format the layer tooltip
+     * The available variables are those of a GeoExt record 
+     * and protocol, protocol_color, protocol_version, service, layername and short_abstract
+     *
+    LAYER_INFO_TEMPLATE: [
+        '<div style="width:250px;">',
+            '<span style="background:{protocol_color};padding:0 0.2em;margin:0 0.4em 0 0;',
+            'border-radius:0.2em;color:#fff;border:0;float:right;">{protocol}</span>',
+            '<b>{title}</b>',
+            '<br/><br/>',
+            '{short_abstract}',
+            //'<br/><br/>',
+            //'Layer <b>{layername}</b> served as {protocol} {protocol_version} by {service}',
+        '</div>'
+    ].join(''),*/
+
+    /**
+     * Constant: PROTOCOL_COLOR
+     * {Object} Association between protocol and color displayed by LAYER_INFO_TEMPLATE
+     *
+    PROTOCOL_COLOR: {
+        "WMS": "#009d00",
+        "WFS": "#ff0243",
+        "WMTS":"#55006a"
+    },*/
+
+    /**
      * Constant: ROLES_FOR_STYLER
      * {Array} roles required for the styler to show up
      * Empty array means the module is available for everyone
@@ -559,6 +586,14 @@ GEOR.custom = {
     //HELP_URL: "http://cms.geobretagne.fr/assistance",
 
     /**
+     * Constant: CONTEXT_LOADED_INDICATOR_DURATION
+     * {Integer} - If set to 0, do not display the popup
+     * displaying context information (title + abstract)
+     * Defaults to 5 seconds.
+     */
+    //CONTEXT_LOADED_INDICATOR_DURATION: 5,
+
+    /**
      * Constant: DISPLAY_SELECTED_OWS_URL
      * {Boolean} - If set to false, do not display the selected WMS/WFS server URL
      * in the second field from the "Add layers" popup window.
@@ -613,59 +648,21 @@ GEOR.custom = {
     }],*/
 
     /**
-     * Constant: WMTS_SERVERS
-     * {Array} List of externals WMTS to display in the WMTS servers tab.
-     */
-    WMTS_SERVERS: [
-        {"name": "geOrchestra demo", "url": "http://sdi.georchestra.org/geoserver/gwc/service/wmts"},
-        {"name": "GéoBretagne OSM", "url": "http://osm.geobretagne.fr/gwc01/service/wmts"},
-        {"name": "GéoBretagne rasters", "url": "http://tile.geobretagne.fr/gwc02/service/wmts"}
-        /*
-        To ship the French Geoportail WMTS layers, you have to ask for an API key,
-        and replace __MY_KEY__ here:
-        ,{"name": "GéoPortail IGN", "url": "http://wxs.ign.fr/__MY_KEY__/wmts"}
-        */
-    ],
+     * Constant: OGC_SERVERS_URL
+     * {Object} associates OGC interface names with resource file URLs
+     *          (relative to viewer or complete) where the servers are enlisted
+     *
+    OGC_SERVERS_URL: {
+        "WMS": "wms.servers.json",
+        "WFS": "wfs.servers.json",
+        "WMTS": "wmts.servers.json"
+    },*/
 
     /**
-     * Constant: WMS_SERVERS
-     * {Array} List of externals WMS to display in the WMS servers tab.
-     */
-    WMS_SERVERS: [
-        {"name": "geOrchestra demo", "url": "http://sdi.georchestra.org/geoserver/wms"},
-        {"name": "GeoBretagne", "url": "http://geobretagne.fr/geoserver/wms"},
-        {"name": "Sandre/zonages", "url": "http://services.sandre.eaufrance.fr/geo/zonage"},
-        {"name": "Sandre/ouvrages", "url": "http://services.sandre.eaufrance.fr/geo/ouvrage"},
-        {"name": "Sandre/stations", "url": "http://services.sandre.eaufrance.fr/geo/stations"},
-        {"name": "BRGM/géologie", "url": "http://geoservices.brgm.fr/geologie"},
-        {"name": "BRGM/risques", "url": "http://geoservices.brgm.fr/risques"},
-        {"name": "Cartorisque33, risques naturels", "url": "http://cartorisque.prim.net/wms/33"},
-        {"name": "Cartorisque24, risques naturels", "url": "http://cartorisque.prim.net/wms/24"},
-        {"name": "Cartorisque47, risques naturels", "url": "http://cartorisque.prim.net/wms/47"},
-        {"name": "Cartorisque40, risques naturels", "url": "http://cartorisque.prim.net/wms/40"},
-        {"name": "Cartorisque64, risques naturels", "url": "http://cartorisque.prim.net/wms/64"},
-        {"name": "Carmen", "url": "http://ws.carmen.application.developpement-durable.gouv.fr/WFS/10/Nature_Paysage"},
-        {"name": "GeoSignal", "url": "http://www.geosignal.org/cgi-bin/wmsmap"},
-        {"name": "Corine Land Cover", "url": "http://sd1878-2.sivit.org/geoserver/wms"},
-        {"name": "GeoLittoral", "url": "http://geolittoral.application.equipement.gouv.fr/wms/metropole"},
-        {"name": "Gest'Eau", "url": "http://gesteau.oieau.fr/service"},
-        {"name": "IFREMER/Océanographie physique", "url": "http://www.ifremer.fr/services/wms/oceanographie_physique"},
-        {"name": "IFREMER/Biologie", "url": "http://www.ifremer.fr/services/wms/biologie"},
-        {"name": "IFREMER/GeoSciences", "url": "http://www.ifremer.fr/services/wms/geosciences"},
-        {"name": "IFREMER/Photos anciennes", "url": "http://www.ifremer.fr/services/photos_anciennes"},
-        {"name": "IFREMER/Nouvelle Calédonie", "url": "http://www.ifremer.fr/services/wms/nc"},
-        {"name": "IFREMER/Euroshell (conchyliculture, aquaculture...)", "url": "http://www.ifremer.fr/services/wms/euroshell"},
-        {"name": "Cartelie/CETE Ouest", "url": "http://mapserveur.application.developpement-durable.gouv.fr/map/mapserv?map%3D%2Fopt%2Fdata%2Fcarto%2Fcartelie%2Fprod%2FCETE_Ouest%2Fxdtyr36laj.www.map"}
-    ],
-    
-    /**
-     * Constant: WFS_SERVERS
-     * {Array} List of externals WFS to display in the WFS servers tab.
-     */
-    WFS_SERVERS: [
-        {"name": "geOrchestra demo", "url": "http://sdi.georchestra.org/geoserver/wfs"},
-        {"name": "GeoBretagne", "url": "http://geobretagne.fr/geoserver/wfs"},
-        {"name": "Corine Land Cover", "url": "http://sd1878-2.sivit.org/geoserver/wfs"}
-    ]
+     * Constant: DEFAULT_SERVICE_TYPE
+     * {String} The default service type for the "Add layer" window OGC tab.
+     * Defaults to "WMS"
+     **/
+    //DEFAULT_SERVICE_TYPE: "WMS"
     // No trailing comma for the last line (or IE will complain)
 }

@@ -8,9 +8,7 @@
  */
 class GenerateConfig {
 
-    // Feel free to customize your instance name,
-    // It will prefix every outgoing email.
-    def instanceName = "geOrchestra"
+    def instanceName = "@shared.instance.name@"
 
     /**
      * @param project The maven project.  you can get all information about
@@ -33,7 +31,6 @@ class GenerateConfig {
       def target, def subTarget, def targetDir,
       def buildSupportDir, def outputDir) {
 
-        installGeoServerExtensions()
         updateGeoServerProperties()
         updateGeoFenceProperties()
         updateMapfishappMavenFilters()
@@ -88,14 +85,17 @@ class GenerateConfig {
             from: 'defaults/geofence-webapp/WEB-INF/classes',
             to: 'geofence-webapp/WEB-INF/classes'
         ).update { properties ->
-            properties['geofenceGlobalConfiguration.baseLayerURL'] = "http://demo1.geo-solutions.it/geoserver-enterprise/wms"
-            properties['geofenceGlobalConfiguration.baseLayerName'] = "GeoSolutions:ne_shaded"
-            properties['geofenceGlobalConfiguration.baseLayerTitle'] = "GeoSolutions Natural Earth"
+            properties['geofenceGlobalConfiguration.baseLayerURL'] = "@shared.url.scheme@://sdi.georchestra.org/geoserver/wms"
+            properties['geofenceGlobalConfiguration.baseLayerName'] = "unearthedoutdoors:truemarble"
+            properties['geofenceGlobalConfiguration.baseLayerTitle'] = "True Marble"
             properties['geofenceGlobalConfiguration.baseLayerFormat'] = "image/jpeg"
             properties['geofenceGlobalConfiguration.baseLayerStyle'] = ""
-            properties['geofenceGlobalConfiguration.mapCenterLon'] = "0.10626"
-            properties['geofenceGlobalConfiguration.mapCenterLat'] = "44.35909"
-            properties['geofenceGlobalConfiguration.mapZoom'] = "6"
+            properties['geofenceGlobalConfiguration.mapCenterLon'] = "273950.30933606"
+            properties['geofenceGlobalConfiguration.mapCenterLat'] = "5901246.3506556"
+            properties['geofenceGlobalConfiguration.mapZoom'] = "4"
+            properties['geofenceGlobalConfiguration.mapMaxResolution'] = "156543.03390625"
+            properties['geofenceGlobalConfiguration.mapMaxExtent'] = "-20037508.34,-20037508.34,20037508.34,20037508.34"
+            properties['geofenceGlobalConfiguration.mapProjection'] = "EPSG:3857"
         }
     }
 
@@ -126,6 +126,11 @@ class GenerateConfig {
 
         def proxyDefaultTarget = "http://localhost:8082"
 
+        // We also assume that geoserver is by default served
+        // by an http connector on localhost, port 8380.
+        def geoserverTarget = "http://localhost:8380"
+        
+        // Change the proxy.mapping value below to match your setup !
         new PropertyUpdate(
             path: 'maven.filter',
             from: 'defaults/security-proxy',
@@ -135,12 +140,17 @@ class GenerateConfig {
             properties['public.ssl'] = "8443"
             properties['private.ssl'] = "8443"
             properties['proxy.defaultTarget'] = proxyDefaultTarget
+            // remove.xforwarded.headers holds a list of servers for which x-forwarded-* headers should be removed:
+            // see https://github.com/georchestra/georchestra/issues/782
+            properties['remove.xforwarded.headers'] = "<value>.*geo.admin.ch.*</value>"
+            // proxy.mapping 
             properties['proxy.mapping'] = """
 <entry key="analytics"     value="proxyDefaultTarget/analytics/" />
 <entry key="catalogapp"    value="proxyDefaultTarget/catalogapp/" />
 <entry key="downloadform"  value="proxyDefaultTarget/downloadform/" />
 <entry key="extractorapp"  value="proxyDefaultTarget/extractorapp/" />
 <entry key="geonetwork"    value="proxyDefaultTarget/geonetwork/" />
+<<<<<<< HEAD
 <entry key="geoserver"     value="http://localhost:8081/geoserver/" />
 <entry key="geofence"      value="http://localhost:8081/geofence/" />
 <entry key="header"        value="proxyDefaultTarget/header/" />
@@ -148,6 +158,15 @@ class GenerateConfig {
 <entry key="mapfishapp"    value="proxyDefaultTarget/mapfishapp/" />
 <entry key="static"        value="proxyDefaultTarget/header/" />
 <entry key="jni-info"      value="proxyDefaultTarget/jni-info/" />""".replaceAll("\n|\t","").replaceAll("proxyDefaultTarget",proxyDefaultTarget)
+=======
+<entry key="geoserver"     value="geoserverTarget/geoserver/" />
+<entry key="geowebcache"   value="proxyDefaultTarget/geowebcache/" />
+<entry key="geofence"      value="proxyDefaultTarget/geofence/" />
+<entry key="header"        value="proxyDefaultTarget/header/" />
+<entry key="ldapadmin"     value="proxyDefaultTarget/ldapadmin/" />
+<entry key="mapfishapp"    value="proxyDefaultTarget/mapfishapp/" />
+<entry key="static"        value="proxyDefaultTarget/header/" />""".replaceAll("\n|\t","").replaceAll("proxyDefaultTarget",proxyDefaultTarget).replaceAll("geoserverTarget",geoserverTarget)
+>>>>>>> upstream/master
             properties['header.mapping'] = """
 <entry key="sec-email"     value="mail" />
 <entry key="sec-firstname" value="givenName" />
@@ -176,8 +195,6 @@ class GenerateConfig {
             // (these are the ones for sdi.georchestra.org, they won't work for you !!!)
             properties['privateKey'] = "6LcfjucSAAAAAKcnHp14epYOiWOIUfEculd4PvLV"
             properties['publicKey'] = "6LcfjucSAAAAAKtNoK5r7IIXxBT-33znNJUgeYg1"
-            // Application path as seen from the external world:
-            properties['publicContextPath'] = "/ldapadmin"
             // Email subjects:
             properties['subject.account.created'] = "["+instanceName+"] Your account has been created"
             properties['subject.account.in.process'] = "["+instanceName+"] Your new account is waiting for validation"
