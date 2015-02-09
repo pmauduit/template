@@ -56,6 +56,7 @@
                 <value>.*ArcGIS.*</value>
                 <value>.*uDig.*</value>
                 <value>.*QGIS.*</value>
+                <value>.*Jakarta.*</value>
             </list>
         </property>
         <property name="ignoreHttps" value="true" />
