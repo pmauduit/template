@@ -150,7 +150,6 @@ class GenerateConfig {
 <entry key="downloadform"  value="proxyDefaultTarget/downloadform/" />
 <entry key="extractorapp"  value="proxyDefaultTarget/extractorapp/" />
 <entry key="geonetwork"    value="proxyDefaultTarget/geonetwork/" />
-<<<<<<< HEAD
 <entry key="geoserver"     value="http://localhost:8081/geoserver/" />
 <entry key="geofence"      value="http://localhost:8081/geofence/" />
 <entry key="header"        value="proxyDefaultTarget/header/" />
@@ -158,15 +157,6 @@ class GenerateConfig {
 <entry key="mapfishapp"    value="proxyDefaultTarget/mapfishapp/" />
 <entry key="static"        value="proxyDefaultTarget/header/" />
 <entry key="jni-info"      value="proxyDefaultTarget/jni-info/" />""".replaceAll("\n|\t","").replaceAll("proxyDefaultTarget",proxyDefaultTarget)
-=======
-<entry key="geoserver"     value="geoserverTarget/geoserver/" />
-<entry key="geowebcache"   value="proxyDefaultTarget/geowebcache/" />
-<entry key="geofence"      value="proxyDefaultTarget/geofence/" />
-<entry key="header"        value="proxyDefaultTarget/header/" />
-<entry key="ldapadmin"     value="proxyDefaultTarget/ldapadmin/" />
-<entry key="mapfishapp"    value="proxyDefaultTarget/mapfishapp/" />
-<entry key="static"        value="proxyDefaultTarget/header/" />""".replaceAll("\n|\t","").replaceAll("proxyDefaultTarget",proxyDefaultTarget).replaceAll("geoserverTarget",geoserverTarget)
->>>>>>> upstream/master
             properties['header.mapping'] = """
 <entry key="sec-email"     value="mail" />
 <entry key="sec-firstname" value="givenName" />
