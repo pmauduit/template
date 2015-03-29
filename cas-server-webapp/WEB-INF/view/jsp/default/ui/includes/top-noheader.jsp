@@ -42,7 +42,8 @@ try {
   ApplicationContext ctx = RequestContextUtils.getWebApplicationContext(request);
   sharedInstanceName = ctx.getBean(GeorchestraConfiguration.class).getSharedProperty("shared.instance.name");
   sharedHomepageUrl = ctx.getBean(GeorchestraConfiguration.class).getSharedProperty("shared.homepage.url");
-} catch (Exception e) {}
+} catch (Exception e) {
+}
 
 %>
 
@@ -55,7 +56,7 @@ try {
   <spring:theme code="standard.custom.css.file" var="customCssFile" />
   <link rel="stylesheet" href="<c:url value="${customCssFile}" />" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  
+
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
   <![endif]-->
