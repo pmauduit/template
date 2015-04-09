@@ -109,14 +109,6 @@
     </servlet>
     <!-- url mapping -->
     <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/_static/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/config/*</url-pattern>
-    </servlet-mapping>    
-    <servlet-mapping>
         <servlet-name>proxy</servlet-name>
         <url-pattern>/sec/*</url-pattern>
     </servlet-mapping>      
