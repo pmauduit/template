@@ -40,8 +40,8 @@ String sharedInstanceName = "@shared.instance.name@";
 String sharedHomepageUrl = "@shared.homepage.url@";
 try {
   ApplicationContext ctx = RequestContextUtils.getWebApplicationContext(request);
-  sharedInstanceName = ctx.getBean(GeorchestraConfiguration.class).getSharedProperty("shared.instance.name");
-  sharedHomepageUrl = ctx.getBean(GeorchestraConfiguration.class).getSharedProperty("shared.homepage.url");
+  sharedInstanceName = ctx.getBean(GeorchestraConfiguration.class).getProperty("instance.name");
+  sharedHomepageUrl = ctx.getBean(GeorchestraConfiguration.class).getProperty("homepage.url");
 } catch (Exception e) {
 }
 
